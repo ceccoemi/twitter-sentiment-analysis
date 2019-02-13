@@ -1,5 +1,6 @@
 package twittersa;
 
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
@@ -38,13 +39,13 @@ public class TweetsReaderCsv implements TweetsReader {
             rows = csv.getArray();
     }
 
-    public List<Integer> readSentiments()
+    public List<String> readSentiments()
     {
         setRowsIfNotCached();
         int size = rows.length - 1;  // CommaSeparatedValues insert an empty row at the bottom
-        List<Integer> sentiments = new ArrayList<>(size);
+        List<String> sentiments = new ArrayList<>(size);
         for (int i = 0; i < size; i++)
-            sentiments.add(Integer.parseInt(rows[i][0]));
+            sentiments.add(rows[i][0]);
         return sentiments;
     }
 

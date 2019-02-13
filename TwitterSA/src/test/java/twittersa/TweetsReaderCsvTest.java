@@ -47,12 +47,12 @@ public class TweetsReaderCsvTest {
     @Test
     public void testReadSentiments() throws IOException
     {
-        List<Integer> sentiments = tweetsReader.readSentiments();
+        List<String> sentiments = tweetsReader.readSentiments();
         assertEquals(4, sentiments.size());
-        assertEquals(new Integer(0), sentiments.get(0));  // negative sentiment: 0
-        assertEquals(new Integer(1), sentiments.get(1));  // positive sentiment: 1
-        assertEquals(new Integer(1), sentiments.get(1));  // positive sentiment: 1
-        assertEquals(new Integer(0), sentiments.get(0));  // negative sentiment: 0
+        assertEquals("0", sentiments.get(0));  // negative sentiment: 0
+        assertEquals("1", sentiments.get(1));  // positive sentiment: 1
+        assertEquals("1", sentiments.get(1));  // positive sentiment: 1
+        assertEquals("0", sentiments.get(0));  // negative sentiment: 0
     }
     
 
