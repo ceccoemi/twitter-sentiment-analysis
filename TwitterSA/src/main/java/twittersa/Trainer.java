@@ -1,7 +1,6 @@
 package twittersa;
 
 
-import com.aliasi.classify.BaseClassifier;
 import com.aliasi.classify.DynamicLMClassifier;
 import com.aliasi.classify.Classification;
 import com.aliasi.classify.Classified;
@@ -11,6 +10,8 @@ import com.aliasi.util.CommaSeparatedValues;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import twittersa.Classifier;
 
 
 public class Trainer {
@@ -26,7 +27,7 @@ public class Trainer {
         classifier = DynamicLMClassifier.createNGramProcess(new String[] {"0", "1"}, nGram);
     }
 
-    public DynamicLMClassifier<NGramProcessLM> train()
+    public Classifier train()
     {
         for (int i = 0; i < tweets.size(); i++) {
             String tweet = tweets.get(i);
@@ -35,7 +36,7 @@ public class Trainer {
             Classified<CharSequence> classified = new Classified<CharSequence>(tweet, c);
             classifier.handle(classified);
         }
-        return classifier;
+        return new Classifier(classifier);
     }
 
 }
