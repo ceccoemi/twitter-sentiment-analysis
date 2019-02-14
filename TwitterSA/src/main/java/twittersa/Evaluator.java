@@ -5,6 +5,7 @@ import java.util.List;
 
 import twittersa.TweetsReader;
 import twittersa.Classifier;
+import twittersa.ConfMatrix;
 
 
 public class Evaluator {
@@ -20,17 +21,27 @@ public class Evaluator {
         sentiments = tweetsReader.readSentiments();
     }
 
-    public double evaluate()
+    public ConfMatrix evaluate()
     {
-        int n = tweets.size();
-        double numCorrect = 0.0;
-        for (int i = 0; i < n; i++) {
+        int truePositive = 0;
+        int falsePositive = 0;
+        int trueNegative = 0;
+        int falseNegative = 0;
+        for (int i = 0; i < tweets.size(); i++) {
             String classifiedCategory = classifier.classify(tweets.get(i));
             String actualCategory = sentiments.get(i);
-            if (actualCategory.equals(classifiedCategory))
-                numCorrect++;
+            if ("1".equals(classifiedCategory))
+                if ("1".equals(actualCategory))
+                    truePositive++;
+                else
+                    falsePositive++;
+            else
+                if ("0".equals(actualCategory))
+                    trueNegative++;
+                else
+                    falseNegative++;
         }
-        return numCorrect / n;
+        return new ConfMatrix(truePositive, falsePositive, trueNegative, falseNegative);
     }
 
 }

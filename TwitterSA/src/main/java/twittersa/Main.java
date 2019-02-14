@@ -8,6 +8,7 @@ import twittersa.TweetsReaderCsv;
 import twittersa.Trainer;
 import twittersa.Classifier;
 import twittersa.Evaluator;
+import twittersa.ConfMatrix;
 
 
 public class Main {
@@ -25,9 +26,11 @@ public class Main {
         // evaluate
         TweetsReader tweetsReaderTest = new TweetsReaderCsv(testFile);
         Evaluator evaluator = new Evaluator(classifier, tweetsReaderTest);
-        double accuracy = evaluator.evaluate();
-
-        System.out.println("Accuracy: " + accuracy);
+        ConfMatrix matrix = evaluator.evaluate();
+    
+        String output = matrix.toString();
+        String[] s = output.split("Macro", 2);
+        System.out.println(s[0]);
     }
 
 }
