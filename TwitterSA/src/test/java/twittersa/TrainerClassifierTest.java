@@ -22,7 +22,7 @@ public class TrainerClassifierTest {
         TweetsReader tweetsReader = new TweetsReaderCsv(fileName);
 
         Trainer trainer = new Trainer(tweetsReader, 8);
-        Classifier classifier = trainer.train();
+        Classifier classifier = trainer.train(false);
         assertEquals("0", classifier.classify("sad sad sad tweet"));
     }
 

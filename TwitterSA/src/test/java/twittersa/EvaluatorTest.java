@@ -21,12 +21,12 @@ public class EvaluatorTest {
         // train
         TweetsReader tweetsReaderTest = buildTweetsReader("tweets_train.csv");
         Trainer trainer = new Trainer(tweetsReaderTest, 8);
-        Classifier classifier = trainer.train();
+        Classifier classifier = trainer.train(false);
         
         // evaluate
         TweetsReader tweetsReaderTrain = buildTweetsReader("tweets_test.csv");
         Evaluator evaluator = new Evaluator(classifier, tweetsReaderTrain);
-        ConfMatrix matrix = evaluator.evaluate();
+        ConfMatrix matrix = evaluator.evaluate(false);
         assertEquals(1.0, matrix.accuracy(), 0);
     }
 

@@ -30,3 +30,8 @@ datasets/tweets1_train.csv
 datasets/tweets1_test.csv
 datasets/tweets2_train.csv
 datasets/tweets2_test.csv
+datasets/train.csv
+datasets/test.csv
+
+# IPython notebooks
+*ipynb*
