@@ -1,0 +1,6 @@
+#!/bin/bash
+
+kaggle datasets download kazanova/sentiment140  # need $ pip install kaggle
+unzip sentiment140.zip
+rm sentiment140.zip
+mv training.1600000.processed.noemoticon.csv tweets.csv
