@@ -23,7 +23,7 @@ public class TrainerClassifierTest {
 		TweetsReader tweetsReader = new TweetsReaderCsv(fileName);
 
 		Trainer trainer = new Trainer(tweetsReader, 8);
-		Classifier classifier = trainer.train(false);
+		Classifier classifier = trainer.train();
 		assertEquals("0", classifier.classify("sad sad sad tweet"));
 	}
 
@@ -34,7 +34,7 @@ public class TrainerClassifierTest {
 		TweetsReader tweetsReader = new TweetsReaderCsv(fileName);
 
 		Trainer trainer = new Trainer(tweetsReader, 8);
-		Classifier classifier = trainer.train(false);
+		Classifier classifier = trainer.train();
 
 		classifier.storeModel("my_model.model");
 		File modelFile = new File("my_model.model");

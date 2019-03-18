@@ -54,9 +54,10 @@ public class TrainModelMain {
 					cmd.getOptionValue("o") : "." + File.separator + "sentiment.model";
 
 			// train and store the model
+			Config.getInstance().setVerbose(verbose);
 			TweetsReader tweetsReaderTrain = new TweetsReaderCsv(inputPath);
 			Trainer trainer = new Trainer(tweetsReaderTrain, 8);
-			Classifier classifier = trainer.train(verbose);
+			Classifier classifier = trainer.train();
 			classifier.storeModel(outputPath);
 
 			System.exit(0);
