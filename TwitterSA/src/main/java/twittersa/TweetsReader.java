@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TweetsReader {
 
-    public List<String> readTweets();
+	public List<String> readTweets();
 
-    public List<String> readSentiments();
+	public List<String> readSentiments();
 
 }
