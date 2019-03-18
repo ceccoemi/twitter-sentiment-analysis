@@ -1,5 +1,10 @@
 package twittersa;
 
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+
 import com.aliasi.classify.DynamicLMClassifier;
 import com.aliasi.lm.NGramProcessLM;
 
@@ -15,6 +20,13 @@ public class Classifier {
 
 	public String classify(String tweet) {
 		return classifier.classify(tweet).bestCategory();
+	}
+
+	public void storeModel(String path) throws IOException {
+		FileOutputStream fileOut = new FileOutputStream(path);
+		ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+		classifier.compileTo(objOut);
+		objOut.close();
 	}
 
 }
