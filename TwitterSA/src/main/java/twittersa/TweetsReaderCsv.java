@@ -26,7 +26,7 @@ public class TweetsReaderCsv implements TweetsReader {
 		setRowsIfNotCached();
 		int size = rows.length - 1;  // CommaSeparatedValues insert an empty row at the bottom
 		List<String> tweets = new ArrayList<>(size);
-		for (int i = 0; i < size; i++)
+		for (int i = 1; i < size; i++)  // start from 1 because of the header
 			tweets.add(rows[i][1]);
 		return tweets;
 	}
@@ -40,7 +40,7 @@ public class TweetsReaderCsv implements TweetsReader {
 		setRowsIfNotCached();
 		int size = rows.length - 1;  // CommaSeparatedValues insert an empty row at the bottom
 		List<String> sentiments = new ArrayList<>(size);
-		for (int i = 0; i < size; i++)
+		for (int i = 1; i < size; i++)  // start from 1 because of the header
 			sentiments.add(rows[i][0]);
 		return sentiments;
 	}
