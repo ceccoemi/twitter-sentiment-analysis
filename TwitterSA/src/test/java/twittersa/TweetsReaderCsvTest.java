@@ -1,55 +1,76 @@
 package twittersa;
 
-import java.util.List;
+
+import java.util.Iterator;
 import java.io.IOException;
 
 import org.junit.Test;
-import org.junit.Before;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
+import twittersa.Sentiment;
+import twittersa.Tweet;
 import twittersa.TweetsReader;
 import twittersa.TweetsReaderCsv;
 
 
 public class TweetsReaderCsvTest {
 
-	private TweetsReader tweetsReader;
-
-	@Before
-	public void setUp() throws IOException{
+	@Test
+	public void testIterationOnEmptyCsv() throws IOException {
 		/*
 		Load the file src/test/resources/tweets_train.csv
 		It's a CSV file with the following content:
-		
-		0,bad bad bad tweet!
+
+		sentiment,text
+		*/
+		ClassLoader classLoader = getClass().getClassLoader();
+		String fileName = classLoader.getResource("empty.csv").getFile();
+
+		TweetsReader reader = new TweetsReaderCsv(fileName);
+
+		Iterator<Tweet> tweetsIter = reader.iter();
+
+		assertFalse(tweetsIter.hasNext());
+	}
+
+
+	@Test
+	public void testIteration() throws IOException {
+		/*
+		Load the file src/test/resources/tweets_train.csv
+		It's a CSV file with the following content:
+
+		sentiment,text
+		0,sad sad sad tweet!
 		1,good good good tweet!
-		0,bad bad bad tweet!
 		1,good good good tweet!
+		0,sad sad sad tweet!
 		*/
 		ClassLoader classLoader = getClass().getClassLoader();
 		String fileName = classLoader.getResource("tweets_train.csv").getFile();
-        
-			tweetsReader = new TweetsReaderCsv(fileName);
-	}
 
-	@Test
-	public void testReadTweets() throws IOException {
-		List<String> tweets = tweetsReader.readTweets();
-		assertEquals(4, tweets.size());
-		assertEquals("sad sad sad tweet!", tweets.get(0));
-		assertEquals("good good good tweet!", tweets.get(1));
-		assertEquals("good good good tweet!", tweets.get(2));
-		assertEquals("sad sad sad tweet!", tweets.get(3));
-	}
+		TweetsReader reader = new TweetsReaderCsv(fileName);
 
-	@Test
-	public void testReadSentiments() throws IOException {
-		List<String> sentiments = tweetsReader.readSentiments();
-		assertEquals(4, sentiments.size());
-		assertEquals("0", sentiments.get(0));  // negative sentiment: 0
-		assertEquals("1", sentiments.get(1));  // positive sentiment: 1
-		assertEquals("1", sentiments.get(2));  // positive sentiment: 1
-		assertEquals("0", sentiments.get(3));  // negative sentiment: 0
-	}  
+		Iterator<Tweet> tweetsIter = reader.iter();
+
+		Tweet tweet = tweetsIter.next();
+		assertEquals("sad sad sad tweet!", tweet.getText());
+		assertEquals("0", tweet.getSentiment());
+
+		tweet = tweetsIter.next();
+		assertEquals("good good good tweet!", tweet.getText());
+		assertEquals("1", tweet.getSentiment());
+
+		tweet = tweetsIter.next();
+		assertEquals("good good good tweet!", tweet.getText());
+		assertEquals("1", tweet.getSentiment());
+
+		tweet = tweetsIter.next();
+		assertEquals("sad sad sad tweet!", tweet.getText());
+		assertEquals("0", tweet.getSentiment());
+
+		assertFalse(tweetsIter.hasNext());
+	}
 
 }

@@ -1,13 +1,14 @@
 package twittersa;
 
 
-import java.util.List;
+import java.util.Iterator;
+
+import twittersa.Tweet;
 
 
+@FunctionalInterface
 public interface TweetsReader {
 
-	public List<String> readTweets();
-
-	public List<String> readSentiments();
+	public Iterator<Tweet> iter();
 
 }
