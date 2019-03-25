@@ -1,9 +1,9 @@
-package org.ceccoemi.twittersa;
+package org.twittersa;
 
 
 import java.util.Iterator;
 
-import org.ceccoemi.twittersa.Tweet;
+import org.twittersa.Tweet;
 
 
 @FunctionalInterface

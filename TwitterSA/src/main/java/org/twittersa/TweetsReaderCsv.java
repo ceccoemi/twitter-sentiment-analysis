@@ -1,4 +1,4 @@
-package org.ceccoemi.twittersa;
+package org.twittersa;
 
 
 import java.util.Iterator;
@@ -8,8 +8,8 @@ import java.io.IOException;
 
 import com.aliasi.util.CommaSeparatedValues;
 
-import org.ceccoemi.twittersa.Tweet;
-import org.ceccoemi.twittersa.TweetsReader;
+import org.twittersa.Tweet;
+import org.twittersa.TweetsReader;
 
 
 public class TweetsReaderCsv implements TweetsReader {

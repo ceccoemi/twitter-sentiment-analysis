@@ -1,4 +1,4 @@
-package org.ceccoemi.twittersa;
+package org.twittersa;
 
 
 import java.util.Iterator;
@@ -8,9 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-import org.ceccoemi.twittersa.Tweet;
-import org.ceccoemi.twittersa.TweetsReader;
-import org.ceccoemi.twittersa.TweetsReaderCsv;
+import org.twittersa.Tweet;
+import org.twittersa.TweetsReader;
+import org.twittersa.TweetsReaderCsv;
 
 
 public class TweetsReaderCsvTest {

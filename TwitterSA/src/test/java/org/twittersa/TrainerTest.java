@@ -1,4 +1,4 @@
-package org.ceccoemi.twittersa;
+package org.twittersa;
 
 
 import java.util.Iterator;
@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 
 import static org.mockito.Mockito.*;
 
-import org.ceccoemi.twittersa.Tweet;
-import org.ceccoemi.twittersa.Trainer;
+import org.twittersa.Tweet;
+import org.twittersa.Trainer;
 
 
 public class TrainerTest {

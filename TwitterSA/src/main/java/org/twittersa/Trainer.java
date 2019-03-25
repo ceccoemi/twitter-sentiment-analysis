@@ -1,4 +1,4 @@
-package org.ceccoemi.twittersa;
+package org.twittersa;
 
 import java.util.Iterator;
 import java.io.FileOutputStream;
@@ -11,7 +11,7 @@ import com.aliasi.classify.Classified;
 import com.aliasi.classify.Classification;
 import com.aliasi.lm.NGramProcessLM;
 
-import org.ceccoemi.twittersa.Tweet;
+import org.twittersa.Tweet;
 
 
 public class Trainer {
