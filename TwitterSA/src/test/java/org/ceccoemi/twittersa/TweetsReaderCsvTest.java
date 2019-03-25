@@ -1,4 +1,4 @@
-package twittersa;
+package org.ceccoemi.twittersa;
 
 
 import java.util.Iterator;
@@ -8,10 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-import twittersa.Sentiment;
-import twittersa.Tweet;
-import twittersa.TweetsReader;
-import twittersa.TweetsReaderCsv;
+import org.ceccoemi.twittersa.Tweet;
+import org.ceccoemi.twittersa.TweetsReader;
+import org.ceccoemi.twittersa.TweetsReaderCsv;
 
 
 public class TweetsReaderCsvTest {
@@ -28,9 +27,7 @@ public class TweetsReaderCsvTest {
 		String fileName = classLoader.getResource("empty.csv").getFile();
 
 		TweetsReader reader = new TweetsReaderCsv(fileName);
-
 		Iterator<Tweet> tweetsIter = reader.iter();
-
 		assertFalse(tweetsIter.hasNext());
 	}
 
@@ -51,7 +48,6 @@ public class TweetsReaderCsvTest {
 		String fileName = classLoader.getResource("tweets_train.csv").getFile();
 
 		TweetsReader reader = new TweetsReaderCsv(fileName);
-
 		Iterator<Tweet> tweetsIter = reader.iter();
 
 		Tweet tweet = tweetsIter.next();

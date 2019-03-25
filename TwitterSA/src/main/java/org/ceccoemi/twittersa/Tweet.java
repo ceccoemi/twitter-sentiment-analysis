@@ -1,4 +1,4 @@
-package twittersa;
+package org.ceccoemi.twittersa;
 
 
 public class Tweet {

@@ -40,6 +40,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<artifactId>commons-cli</artifactId>
 		<version>1.4</version>
 	</dependency>
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-all</artifactId>
+		<version>1.10.19</version>
+		<scope>test</scope>
+	</dependency>
 </dependencies>
 
 <build>

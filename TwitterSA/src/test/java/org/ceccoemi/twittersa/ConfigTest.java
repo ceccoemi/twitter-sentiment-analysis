@@ -1,10 +1,10 @@
-package twittersa;
+package org.ceccoemi.twittersa;
 
 
 import org.junit.Test;
 import static org.junit.Assert.assertSame;
 
-import twittersa.Config;
+import org.ceccoemi.twittersa.Config;
 
 
 public class ConfigTest {
