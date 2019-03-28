@@ -1,16 +1,49 @@
 package com.ceccoemi.twittersa;
 
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import java.io.IOException;
+import java.io.File;
+import com.ceccoemi.twittersa.Config;
+import com.ceccoemi.twittersa.Trainer;
+import com.ceccoemi.twittersa.TweetsReader;
+import com.ceccoemi.twittersa.TweetsReaderCsv;
 
 public class Main {
 
-  private static final Logger LOGGER = LogManager.getLogger(Main.class);
+  private void printHelpAndExit() {
+    System.out.println(String.format("%s\n\n%s\n%s%s\n\n%s\n%s%s",
+        "Usage: twittersa <command> [<args>]",
+        "Available commands:",
+        "    train <input-file> <output-file>",
+        "    Train the model with data in <input-file> and store it in <output-file>",
+        "Available options:",
+        "    -v, --verbose",
+        "    Append this to a command to print some information during the process"));
+    System.exit(-1);
+  }
 
-  public static void main(String[] args) {
-    LOGGER.info("Hello from twittersa!");
+  private void trainModelAndSaveIt(String inputPath, String outputPath) throws IOException {
+    Trainer trainer = new Trainer();
+    TweetsReader tweetsReader = new TweetsReaderCsv(inputPath);
+    trainer.train(tweetsReader.iter());
+    trainer.storeModel(outputPath);
+  }
+
+  private void run(String[] args) throws IOException {
+    if (args.length < 1
+        || !args[0].matches("train|validate|classify")
+        || ("train".equals(args[0]) && args.length < 3))
+      printHelpAndExit();
+
+    if (args[args.length - 1].matches("-v|--verbose"))
+      Config.getInstance().setVerbose(true);
+
+    if ("train".equals(args[0])) {
+      trainModelAndSaveIt(args[1], args[2]);
+    }
+  }
+
+  public static void main(String[] args) throws IOException {
+    new Main().run(args);
   }
 
 }
