@@ -1,4 +1,4 @@
-package org.twittersa;
+package com.ceccoemi.twittersa;
 
 
 import java.util.Iterator;
@@ -8,9 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-import org.twittersa.Tweet;
-import org.twittersa.TweetsReader;
-import org.twittersa.TweetsReaderCsv;
+import com.ceccoemi.twittersa.Tweet;
+import com.ceccoemi.twittersa.TweetsReader;
+import com.ceccoemi.twittersa.TweetsReaderCsv;
 
 
 public class TweetsReaderCsvTest {
@@ -45,7 +45,7 @@ public class TweetsReaderCsvTest {
 		0,sad sad sad tweet!
 		*/
 		ClassLoader classLoader = getClass().getClassLoader();
-		String fileName = classLoader.getResource("tweets_train.csv").getFile();
+		String fileName = classLoader.getResource("tweets.csv").getFile();
 
 		TweetsReader reader = new TweetsReaderCsv(fileName);
 		Iterator<Tweet> tweetsIter = reader.iter();
