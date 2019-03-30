@@ -16,14 +16,14 @@ public class Trainer {
       DynamicLMClassifier.createNGramProcess(new String[]{"1", "0"}, 8);
   private boolean trained = false;
 
-  public void train(Iterator<Tweet> tweetsIter) {
+  public void train(Iterator<Tweet> tweetsIterator) {
     if (config.isVerbose())
       System.out.print("Training ... ");
-    if (tweetsIter.hasNext())
+    if (tweetsIterator.hasNext())
       trained = true;
     int i = 0;
-    while (tweetsIter.hasNext()) {
-      Tweet tweet = tweetsIter.next();
+    while (tweetsIterator.hasNext()) {
+      Tweet tweet = tweetsIterator.next();
       String text = tweet.getText();
       String sentiment = tweet.getSentiment();
       Classification classification = new Classification(sentiment);
