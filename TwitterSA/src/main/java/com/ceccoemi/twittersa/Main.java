@@ -1,15 +1,19 @@
 package com.ceccoemi.twittersa;
 
+import com.aliasi.classify.ConfusionMatrix;
+
 import java.io.IOException;
 
 public class Main {
 
   private void printHelpAndExit() {
-    System.out.println(String.format("%s\n\n%s\n%s%s\n\n%s\n%s%s",
+    System.out.println(String.format("%s\n\n%s\n%s%s\n%s%s\n\n%s\n%s%s",
         "Usage: twittersa <command> [<args>]",
         "Available commands:",
         "    train <input-file> <output-file>",
         "    Train the model with data in <input-file> and store it in <output-file>",
+        "    evaluate <model-file> <input-file>",
+        "    Evaluate the model stored in <model-file> with data in <input-file>",
         "Available options:",
         "    -v, --verbose",
         "    Append this to a command to print some information during the process"));
@@ -23,10 +27,19 @@ public class Main {
     trainer.storeModel(outputPath);
   }
 
-  private void run(String[] args) throws IOException {
+  private void evaluateModel(String modelFile, String inputFile)
+      throws IOException, ClassNotFoundException {
+    Classifier classifier = new Classifier(modelFile);
+    TweetsReader reader = new TweetsReaderCsv(inputFile);
+    Evaluator evaluator = new Evaluator(classifier);
+    ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.iter());
+    System.out.println(confusionMatrix.toString().split("Macro", 2)[0]);
+  }
+
+  private void run(String[] args) throws IOException, ClassNotFoundException {
     if (args.length < 1
-        || !args[0].matches("train|validate|classify")
-        || ("train".equals(args[0]) && args.length < 3))
+        || !args[0].matches("train|evaluate")
+        || args.length < 3)
       printHelpAndExit();
 
     if (args[args.length - 1].matches("-v|--verbose"))
@@ -34,10 +47,12 @@ public class Main {
 
     if ("train".equals(args[0])) {
       trainModelAndSaveIt(args[1], args[2]);
+    } else if ("evaluate".equals(args[0])) {
+      evaluateModel(args[1], args[2]);
     }
   }
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, ClassNotFoundException {
     new Main().run(args);
   }
 

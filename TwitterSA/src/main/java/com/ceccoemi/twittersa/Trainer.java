@@ -35,7 +35,7 @@ public class Trainer {
       }
     }
     if (config.isVerbose())
-      System.out.println("\rTraining ... Done!");
+      System.out.println("\rTraining ... Done!    ");
   }
 
   public void storeModel(String fileName) throws IOException {
@@ -45,10 +45,10 @@ public class Trainer {
       FileOutputStream fos = new FileOutputStream(fileName);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
       if (config.isVerbose())
-        System.out.print("Saving the model in " + fileName + " ...");
+        System.out.print("Saving the model in \"" + fileName + "\" ... ");
       classifier.compileTo(oos);
       if (config.isVerbose())
-        System.out.println("\rSaving the model in " + fileName + " Done!");
+        System.out.println("\rSaving the model in \"" + fileName + "\" Done!");
   }
 
 }

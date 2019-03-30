@@ -15,12 +15,12 @@ public class TweetsReaderCsv implements TweetsReader {
   public TweetsReaderCsv(String fileName) throws IOException {
     File file = new File(fileName);
     if (config.isVerbose())
-      System.out.print("Reading " + fileName + " ...");
+      System.out.print("Reading \"" + fileName + "\" ... ");
     CommaSeparatedValues csv = new CommaSeparatedValues(file, "UTF-8");
     rows = csv.getArray();
     size = rows.length - 1;  // CommaSeparatedValues insert an empty row at the bottom
     if (config.isVerbose()) {
-      System.out.println("\rReading " + fileName + " ... Done!");
+      System.out.println("\rReading \"" + fileName + "\" ... Done!");
       System.out.println("Dataset size: " + (size - 1)); // -1 for the header
     }
   }
