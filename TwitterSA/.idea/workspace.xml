@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95950ed5-1eee-46cf-9e19-b8397dce9ad2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Classifier.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,7 +28,7 @@
         <counts>
           <entry key="html" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="36" />
+          <entry key="java" value="40" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
@@ -36,18 +36,20 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="40" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1209" />
+          <entry key="dummy" value="4" />
+          <entry key="java" value="2491" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1209" />
+          <entry key="JAVA" value="2491" />
+          <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
     </session>
@@ -69,10 +71,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="384">
+              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#139#140#0" expanded="true" />
+                <element signature="e#176#177#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,10 +118,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Config.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Classifier.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/Evaluator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" />
       </list>
     </option>
   </component>
@@ -415,29 +437,11 @@
       <workItem from="1553903639675" duration="502000" />
       <workItem from="1553904169050" duration="188000" />
       <workItem from="1553932854546" duration="3386000" />
-      <workItem from="1553936272394" duration="1358000" />
+      <workItem from="1553936272394" duration="4951000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RunAllTests - 2019.03.30 at 01h 05m 21s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.03.30 at 09h 06m 58s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.03.30 at 09h 07m 08s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.03.30 at 09h 48m 08s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.03.30 at 09h 49m 26s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.03.30 at 09h 51m 21s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RunAllTests - 2019.03.30 at 09h 51m 50s.xml">
       <configuration name="RunAllTests" configurationId="JUnit" />
     </history-entry>
@@ -450,12 +454,31 @@
     <history-entry file="RunAllTests - 2019.03.30 at 09h 55m 36s.xml">
       <configuration name="RunAllTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 10h 31m 48s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 10h 33m 40s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 11h 03m 20s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 11h 13m 28s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 11h 24m 53s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.03.30 at 11h 27m 15s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6652000" />
+    <option name="totallyTimeSpent" value="10245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="32" width="1922" height="1049" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21244635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -464,7 +487,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26398212" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26398212" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -478,7 +501,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3299356" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.3299356" />
     </layout>
@@ -532,6 +555,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#321#322#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -564,18 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Classifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -588,10 +604,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state relative-caret-position="240">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
