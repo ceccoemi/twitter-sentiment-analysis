@@ -1,11 +1,6 @@
 package com.ceccoemi.twittersa;
 
 import java.io.IOException;
-import java.io.File;
-import com.ceccoemi.twittersa.Config;
-import com.ceccoemi.twittersa.Trainer;
-import com.ceccoemi.twittersa.TweetsReader;
-import com.ceccoemi.twittersa.TweetsReaderCsv;
 
 public class Main {
 

@@ -6,9 +6,6 @@ import static org.junit.Assert.assertFalse;
 import java.util.Iterator;
 import java.io.IOException;
 import org.junit.Test;
-import com.ceccoemi.twittersa.Tweet;
-import com.ceccoemi.twittersa.TweetsReader;
-import com.ceccoemi.twittersa.TweetsReaderCsv;
 
 public class TweetsReaderCsvTest {
 

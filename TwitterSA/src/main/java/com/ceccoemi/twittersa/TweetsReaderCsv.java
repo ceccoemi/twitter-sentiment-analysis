@@ -5,18 +5,14 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.IOException;
 import com.aliasi.util.CommaSeparatedValues;
-import com.ceccoemi.twittersa.Config;
-import com.ceccoemi.twittersa.Tweet;
-import com.ceccoemi.twittersa.TweetsReader;
 
 public class TweetsReaderCsv implements TweetsReader {
 
-  private Config config;
+  private Config config = Config.getInstance();
   private String[][] rows;
   private int size;
 
   public TweetsReaderCsv(String fileName) throws IOException {
-    config = Config.getInstance();
     File file = new File(fileName);
     if (config.isVerbose())
       System.out.print("Reading " + fileName + " ...");

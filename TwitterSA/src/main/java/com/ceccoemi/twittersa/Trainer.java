@@ -3,14 +3,11 @@ package com.ceccoemi.twittersa;
 import java.util.Iterator;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import com.aliasi.classify.DynamicLMClassifier;
 import com.aliasi.classify.Classified;
 import com.aliasi.classify.Classification;
 import com.aliasi.lm.NGramProcessLM;
-import com.ceccoemi.twittersa.Config;
-import com.ceccoemi.twittersa.Tweet;
 
 public class Trainer {
 

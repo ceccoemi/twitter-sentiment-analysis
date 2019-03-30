@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.After;
-import com.ceccoemi.twittersa.Config;
 
 public class ConfigTest {
 
