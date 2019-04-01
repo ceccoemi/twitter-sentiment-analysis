@@ -1,7 +1,5 @@
 package com.ceccoemi.twittersa;
 
-import com.aliasi.classify.ConfusionMatrix;
-
 import java.util.Iterator;
 
 public class Evaluator {
@@ -42,7 +40,6 @@ public class Evaluator {
       System.out.println("\rEvaluating ... Done!    ");
     }
     return new ConfusionMatrix(
-        new String[]{"positive", "negative"},
-        new int[][] {{truePositive, falsePositive}, {falseNegative, trueNegative}});
+        truePositive, falsePositive, falseNegative, trueNegative);
   }
 }

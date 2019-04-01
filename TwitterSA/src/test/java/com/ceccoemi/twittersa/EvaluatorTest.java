@@ -1,6 +1,5 @@
 package com.ceccoemi.twittersa;
 
-import com.aliasi.classify.ConfusionMatrix;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,7 +7,6 @@ import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,10 +33,6 @@ public class EvaluatorTest {
   public void testEvaluate() {
     Evaluator evaluator = new Evaluator(mockedClassifier);
     ConfusionMatrix confusionMatrix = evaluator.evaluate(mockedTweetsIterator);
-    int[][] matrix = confusionMatrix.matrix();
-    assertEquals(1, matrix[0][0]);
-    assertEquals(1, matrix[0][1]);
-    assertEquals(1, matrix[1][0]);
-    assertEquals(1, matrix[1][1]);
+    assertEquals(0.5, confusionMatrix.accuracy(), 0.00001);
   }
 }

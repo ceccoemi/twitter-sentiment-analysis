@@ -11,6 +11,12 @@ public class Tweet {
     this.text = text;
   }
 
+  public Tweet(String csvLine) {
+    String[] splitted = csvLine.split(",", 2);
+    sentiment = splitted[0];
+    text = splitted[1];
+  }
+
   public String getSentiment() {
     return sentiment;
   }

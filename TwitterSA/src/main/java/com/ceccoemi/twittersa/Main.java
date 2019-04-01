@@ -1,7 +1,5 @@
 package com.ceccoemi.twittersa;
 
-import com.aliasi.classify.ConfusionMatrix;
-
 import java.io.IOException;
 
 public class Main {
@@ -33,7 +31,7 @@ public class Main {
     TweetsReader reader = new TweetsReaderCsv(inputFile);
     Evaluator evaluator = new Evaluator(classifier);
     ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.iter());
-    System.out.println(confusionMatrix.toString().split("Macro", 2)[0]);
+    System.out.println(confusionMatrix.toString());
   }
 
   private void run(String[] args) throws IOException, ClassNotFoundException {
