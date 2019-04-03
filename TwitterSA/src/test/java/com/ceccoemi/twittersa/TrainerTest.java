@@ -25,12 +25,6 @@ public class TrainerTest {
     new File(tempPath).delete();
   }
 
-  @Test(expected = RuntimeException.class)
-  public void storeModelWithoutTrainingThrowsException() throws IOException {
-    Trainer trainer = new Trainer();
-    trainer.storeModel(tempPath);
-  }
-
   @Test
   public void testTraining() throws IOException {
     List<Tweet> tweets = Arrays.asList(

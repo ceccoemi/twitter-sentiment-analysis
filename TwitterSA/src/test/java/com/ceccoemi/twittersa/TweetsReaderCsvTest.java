@@ -44,6 +44,8 @@ public class TweetsReaderCsvTest {
     TweetsReader reader = new TweetsReaderCsv(fileName);
     List<Tweet> tweets = reader.readTweets();
 
+    assertEquals(4, tweets.size());
+
     Tweet tweet = tweets.get(0);
     assertEquals("sad sad sad tweet!", tweet.getText());
     assertEquals("0", tweet.getSentiment());
