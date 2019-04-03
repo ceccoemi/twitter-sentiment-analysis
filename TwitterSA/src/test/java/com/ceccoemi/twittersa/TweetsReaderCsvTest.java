@@ -1,16 +1,16 @@
 package com.ceccoemi.twittersa;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
-import java.util.Iterator;
-import java.io.IOException;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class TweetsReaderCsvTest {
 
   @Test
-  public void testIterationOnEmptyCsv() throws IOException {
+  public void readEmptyCsv() throws IOException {
     /*
     Load the file src/test/resources/tweets_train.csv
     It's a CSV file with the following content:
@@ -21,13 +21,13 @@ public class TweetsReaderCsvTest {
     String fileName = classLoader.getResource("empty.csv").getFile();
 
     TweetsReader reader = new TweetsReaderCsv(fileName);
-    Iterator<Tweet> tweetsIter = reader.iter();
-    assertFalse(tweetsIter.hasNext());
+    List<Tweet> tweets = reader.readTweets();
+    assertEquals(0, tweets.size());
   }
 
 
   @Test
-  public void testIteration() throws IOException {
+  public void readCsv() throws IOException {
     /*
     Load the file src/test/resources/tweets_train.csv
     It's a CSV file with the following content:
@@ -42,25 +42,23 @@ public class TweetsReaderCsvTest {
     String fileName = classLoader.getResource("tweets.csv").getFile();
 
     TweetsReader reader = new TweetsReaderCsv(fileName);
-    Iterator<Tweet> tweetsIter = reader.iter();
+    List<Tweet> tweets = reader.readTweets();
 
-    Tweet tweet = tweetsIter.next();
+    Tweet tweet = tweets.get(0);
     assertEquals("sad sad sad tweet!", tweet.getText());
     assertEquals("0", tweet.getSentiment());
 
-    tweet = tweetsIter.next();
+    tweet = tweets.get(1);
     assertEquals("good good good tweet!", tweet.getText());
     assertEquals("1", tweet.getSentiment());
 
-    tweet = tweetsIter.next();
+    tweet = tweets.get(2);
     assertEquals("good good good tweet!", tweet.getText());
     assertEquals("1", tweet.getSentiment());
 
-    tweet = tweetsIter.next();
+    tweet = tweets.get(3);
     assertEquals("sad sad sad tweet!", tweet.getText());
     assertEquals("0", tweet.getSentiment());
-
-    assertFalse(tweetsIter.hasNext());
   }
 
 }

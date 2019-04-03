@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
+import java.util.List;
+
 import com.aliasi.classify.DynamicLMClassifier;
 import com.aliasi.classify.Classified;
 import com.aliasi.classify.Classification;
@@ -16,14 +18,13 @@ public class Trainer {
       DynamicLMClassifier.createNGramProcess(new String[]{"1", "0"}, 8);
   private boolean trained = false;
 
-  public void train(Iterator<Tweet> tweetsIterator) {
+  public void train(List<Tweet> tweets) {
     if (config.isVerbose())
       System.out.print("Training ... ");
-    if (tweetsIterator.hasNext())
+    if (tweets.size() > 0)
       trained = true;
     int i = 0;
-    while (tweetsIterator.hasNext()) {
-      Tweet tweet = tweetsIterator.next();
+    for (Tweet tweet : tweets) {
       String text = tweet.getText();
       String sentiment = tweet.getSentiment();
       Classification classification = new Classification(sentiment);

@@ -21,7 +21,7 @@ public class Main {
   private void trainModelAndSaveIt(String inputPath, String outputPath) throws IOException {
     Trainer trainer = new Trainer();
     TweetsReader tweetsReader = new TweetsReaderCsv(inputPath);
-    trainer.train(tweetsReader.iter());
+    trainer.train(tweetsReader.readTweets());
     trainer.storeModel(outputPath);
   }
 
@@ -30,7 +30,7 @@ public class Main {
     Classifier classifier = new Classifier(modelFile);
     TweetsReader reader = new TweetsReaderCsv(inputFile);
     Evaluator evaluator = new Evaluator(classifier);
-    ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.iter());
+    ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.readTweets());
     System.out.println(confusionMatrix.toString());
   }
 

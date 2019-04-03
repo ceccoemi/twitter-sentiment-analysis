@@ -1,10 +1,10 @@
 package com.ceccoemi.twittersa;
 
-import java.util.Iterator;
+import java.util.List;
 
 @FunctionalInterface
 public interface TweetsReader {
 
-  Iterator<Tweet> iter();
+  List<Tweet> readTweets();
 
 }

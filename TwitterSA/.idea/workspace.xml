@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95950ed5-1eee-46cf-9e19-b8397dce9ad2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__info_picocli_picocli_3_9_5.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/EvaluatorMapper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twittersa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/twittersa.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,6 +22,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -38,17 +46,17 @@
         <counts>
           <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.13" value="4" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="57" />
+          <entry key="java" value="66" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
@@ -56,20 +64,20 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="57" />
+          <entry key="JAVA" value="66" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="24" />
-          <entry key="java" value="5383" />
+          <entry key="java" value="6200" />
           <entry key="xml" value="112" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5383" />
+          <entry key="JAVA" value="6200" />
           <entry key="PLAIN_TEXT" value="24" />
           <entry key="XML" value="112" />
         </counts>
@@ -78,11 +86,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/ConfusionMatrix.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="373">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,26 +140,26 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ConfigTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Config.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/Evaluator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Classifier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/EvaluatorMapper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ConfMatrixTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/ConfMatrix.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ConfusionMatrixTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/ConfusionMatrix.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java" />
       </list>
     </option>
   </component>
@@ -287,6 +324,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -346,7 +384,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,7 +395,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -419,16 +456,11 @@
       <workItem from="1553932854546" duration="3386000" />
       <workItem from="1553936272394" duration="9008000" />
       <workItem from="1554054699763" duration="9179000" />
+      <workItem from="1554291096094" duration="4158000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RunAllTests - 2019.04.01 at 17h 11m 17s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RunAllTests - 2019.04.01 at 17h 11m 35s.xml">
-      <configuration name="RunAllTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RunAllTests - 2019.04.01 at 17h 48m 49s.xml">
       <configuration name="RunAllTests" configurationId="JUnit" />
     </history-entry>
@@ -453,22 +485,28 @@
     <history-entry file="RunAllTests - 2019.04.01 at 18h 53m 20s.xml">
       <configuration name="RunAllTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RunAllTests - 2019.04.03 at 15h 34m 26s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RunAllTests - 2019.04.03 at 16h 10m 30s.xml">
+      <configuration name="RunAllTests" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24609000" />
+    <option name="totallyTimeSpent" value="28767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="32" width="1922" height="1049" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21834764" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22156653" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26398212" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26398212" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -505,20 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ConfigTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -527,24 +551,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/target/site/jacoco/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/ClassifierTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="30" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -560,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -574,13 +577,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -612,34 +608,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/ConfusionMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+        <state>
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/TweetsReaderCsv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Trainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
+        <state relative-caret-position="120">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Evaluator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="349">
+          <caret line="43" column="2" selection-start-line="43" selection-start-column="2" selection-end-line="43" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/ConfusionMatrix.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ceccoemi/twittersa/Tweet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TrainerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/EvaluatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ceccoemi/twittersa/TweetsReaderCsvTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

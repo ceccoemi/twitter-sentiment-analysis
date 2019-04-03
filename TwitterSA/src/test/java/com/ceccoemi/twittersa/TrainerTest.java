@@ -1,15 +1,15 @@
 package com.ceccoemi.twittersa;
 
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.util.Iterator;
 import java.io.File;
 import java.io.IOException;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class TrainerTest {
 
@@ -26,30 +26,23 @@ public class TrainerTest {
   }
 
   @Test(expected = RuntimeException.class)
-  public void storeModelWithoutTrainingiThrowsException() throws IOException {
+  public void storeModelWithoutTrainingThrowsException() throws IOException {
     Trainer trainer = new Trainer();
     trainer.storeModel(tempPath);
-  }
-
-  private Iterator<Tweet> createMockedIterator() {
-    Iterator<Tweet> tweetsIter = mock(Iterator.class);
-    when(tweetsIter.hasNext()).thenReturn(true, true, true, true, false);
-    when(tweetsIter.next()).thenReturn(
-        new Tweet("0", "sad sad sad tweet!"),
-        new Tweet("1", "good good good tweet!"),
-        new Tweet("1", "good good good tweet!"),
-        new Tweet("0", "sad sad sad tweet!"));
-    return tweetsIter;
   }
 
   @Test
   public void testTraining() throws IOException {
-    Iterator<Tweet> tweetsIter = createMockedIterator();
+    List<Tweet> tweets = Arrays.asList(
+        new Tweet("0", "sad sad sad tweet!"),
+        new Tweet("1", "good good good tweet!"),
+        new Tweet("1", "good good good tweet!"),
+        new Tweet("0", "sad sad sad tweet!"));
 
     Trainer trainer = new Trainer();
-    trainer.train(tweetsIter);
-
+    trainer.train(tweets);
     trainer.storeModel(tempPath);
+
     assertTrue(new File(tempPath).exists());
   }
 
@@ -58,12 +51,12 @@ public class TrainerTest {
     // create a directory with the same name to make the file creation fail
     new File(tempPath).mkdir();
 
-    Iterator<Tweet> tweetsIter = createMockedIterator();
+    List<Tweet> tweets = Arrays.asList(new Tweet("0", "dummy tweet"));
 
     Trainer trainer = new Trainer();
-    trainer.train(tweetsIter);
+    trainer.train(tweets);
 
-    trainer.storeModel(tempPath);
+    trainer.storeModel(tempPath);  // IOException should be thrown
   }
 
 }

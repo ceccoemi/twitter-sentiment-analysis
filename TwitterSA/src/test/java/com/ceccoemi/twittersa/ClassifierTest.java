@@ -19,7 +19,7 @@ public class ClassifierTest {
     String csv = classLoader.getResource("tweets.csv").getFile();
 
     Trainer trainer = new Trainer();
-    trainer.train(new TweetsReaderCsv(csv).iter());
+    trainer.train(new TweetsReaderCsv(csv).readTweets());
     trainer.storeModel(tempPath);
   }
 

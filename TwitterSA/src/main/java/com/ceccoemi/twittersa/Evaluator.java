@@ -1,6 +1,7 @@
 package com.ceccoemi.twittersa;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class Evaluator {
 
@@ -11,7 +12,7 @@ public class Evaluator {
     this.classifier = classifier;
   }
 
-  public ConfusionMatrix evaluate(Iterator<Tweet> tweetsIterator) {
+  public ConfusionMatrix evaluate(List<Tweet> tweets) {
     if (config.isVerbose())
       System.out.print("Evaluating ... ");
     int i = 0;
@@ -19,8 +20,7 @@ public class Evaluator {
     int trueNegative = 0;
     int falsePositive = 0;
     int falseNegative = 0;
-    while (tweetsIterator.hasNext()) {
-      Tweet tweet = tweetsIterator.next();
+    for (Tweet tweet : tweets) {
       String classifiedSentiment = classifier.classify(tweet.getText());
       if (tweet.getSentiment().equals(classifiedSentiment))
         if ("1".equals(classifiedSentiment))
