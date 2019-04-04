@@ -1,5 +1,9 @@
 package com.ceccoemi.twittersa;
 
+import java.util.Arrays;
+
+import static org.apache.commons.lang3.StringUtils.center;
+
 public class ConfusionMatrix {
 
   private int n;
@@ -23,30 +27,21 @@ public class ConfusionMatrix {
   @Override
   public String toString() {
     int spanLen = 9;
-    String repr = "Total observations: " + n + "\n";
-    repr += "\n";
-    repr += "                       Actual sentiment   \n";
-    repr += "           +-----------------------------+\n";
-    repr += "           |     |    Pos    |    Neg    |\n";
-    String tpSpan = computeSpan(spanLen, tp);
-    String fpSpan = computeSpan(spanLen, fp);
-    repr += "           |---- +-----------------------|\n";
-    repr += "Predicted  | Pos | " + tpSpan + tp + " | " + fpSpan + fp + " |\n";
-    repr += "sentiment  |---- +-----------------------|\n";
-    String fnSpan = computeSpan(spanLen, fn);
-    String tnSpan = computeSpan(spanLen, tn);
-    repr += "           | Neg | " + fnSpan + fn + " | " + tnSpan + tn + " |\n";
-    repr += "           +-----------------------------+\n";
-    repr += "\n";
-    repr += "Accuracy: " + accuracy();
-    return repr;
-  }
-
-  private String computeSpan(int availableSpace, int n) {
-    StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < availableSpace - String.valueOf(n).length(); i++)
-      builder.append(" ");
-    return builder.toString();
+    return String.join(System.lineSeparator(), Arrays.asList(
+        "Total observations: " + n,
+        "",
+        "                       Actual sentiment   ",
+        "           +-----------------------------+",
+        "           |     |    Pos    |    Neg    |",
+        "           |---- +-----------------------|",
+        "Predicted  | Pos | " + center(String.valueOf(tp), spanLen, ' ') + " | "
+            + center(String.valueOf(fp), spanLen, ' ') + " |",
+        "sentiment  |---- +-----------------------|",
+        "           | Neg | " + center(String.valueOf(fn), spanLen, ' ') + " | "
+            + center(String.valueOf(tn), spanLen, ' ') + " |",
+        "           +-----------------------------+",
+        "",
+        "Accuracy: " + accuracy()));
   }
 
 }

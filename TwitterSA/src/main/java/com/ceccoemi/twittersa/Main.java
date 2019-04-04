@@ -5,8 +5,8 @@ import java.io.IOException;
 public class Main {
 
   private void printHelpAndExit() {
-    System.out.println(String.format("%s\n\n%s\n%s%s\n%s%s\n\n%s\n%s%s",
-        "Usage: twittersa <command> [<args>]",
+    System.out.println(String.format("%s%n%n%s%n%s%s%n%s%s%n%n%s%n%s%s",
+        "Usage: twittersa <command> [<args>] [-v|--verbose]",
         "Available commands:",
         "    train <input-file> <output-file>",
         "    Train the model with data in <input-file> and store it in <output-file>",
@@ -35,13 +35,13 @@ public class Main {
   }
 
   private void run(String[] args) throws IOException, ClassNotFoundException {
-    if (args.length < 1
-        || !args[0].matches("train|evaluate")
-        || args.length < 3)
+    if (args.length < 1 || !args[0].matches("train|evaluate") || args.length < 3) {
       printHelpAndExit();
+    }
 
-    if (args[args.length - 1].matches("-v|--verbose"))
+    if (args[args.length - 1].matches("-v|--verbose")) {
       Config.getInstance().setVerbose(true);
+    }
 
     if ("train".equals(args[0])) {
       trainModelAndSaveIt(args[1], args[2]);
