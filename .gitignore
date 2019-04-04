@@ -17,3 +17,5 @@ datasets/*.csv
 **/.idea/workspace.xml
 *.iws
 **/.idea/tasks.xml
+**/.idea/modules.xml
+**/.idea/libraries/*
