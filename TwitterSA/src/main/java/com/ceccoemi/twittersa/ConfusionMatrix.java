@@ -27,9 +27,7 @@ public class ConfusionMatrix {
   @Override
   public String toString() {
     int spanLen = 9;
-    return String.join(System.lineSeparator(), Arrays.asList(
-        "Total observations: " + n,
-        "",
+    return String.join(System.lineSeparator(),
         "                       Actual sentiment   ",
         "           +-----------------------------+",
         "           |     |    Pos    |    Neg    |",
@@ -41,7 +39,8 @@ public class ConfusionMatrix {
             + center(String.valueOf(tn), spanLen, ' ') + " |",
         "           +-----------------------------+",
         "",
-        "Accuracy: " + accuracy()));
+        "Observations: " + n,
+        "Accuracy: " + accuracy());
   }
 
 }

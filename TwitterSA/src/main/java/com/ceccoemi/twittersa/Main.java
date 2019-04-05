@@ -1,20 +1,20 @@
 package com.ceccoemi.twittersa;
 
+import org.apache.hadoop.util.ToolRunner;
+
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
 
   private void printHelpAndExit() {
-    System.out.println(String.format("%s%n%n%s%n%s%s%n%s%s%n%n%s%n%s%s",
-        "Usage: twittersa <command> [<args>] [-v|--verbose]",
+    System.out.println(String.join(System.lineSeparator(),
+        "Usage: twittersa <command> [<args>]",
+        "",
         "Available commands:",
-        "    train <input-file> <output-file>",
-        "    Train the model with data in <input-file> and store it in <output-file>",
-        "    evaluate <model-file> <input-file>",
-        "    Evaluate the model stored in <model-file> with data in <input-file>",
-        "Available options:",
-        "    -v, --verbose",
-        "    Append this to a command to print some information during the process"));
+        "    train <input-file> <output-file> [-v|--verbose]",
+        "    evaluate <model-file> <input-file> [-v|--verbose]",
+        "    evaluate-mr <model-file> <input-dir> <output-dir>"));
     System.exit(-1);
   }
 
@@ -34,8 +34,8 @@ public class Main {
     System.out.println(confusionMatrix.toString());
   }
 
-  private void run(String[] args) throws IOException, ClassNotFoundException {
-    if (args.length < 1 || !args[0].matches("train|evaluate") || args.length < 3) {
+  private void run(String[] args) throws Exception {
+    if (args.length < 3 || !args[0].matches("train|evaluate|evaluate-mr")) {
       printHelpAndExit();
     }
 
@@ -47,10 +47,13 @@ public class Main {
       trainModelAndSaveIt(args[1], args[2]);
     } else if ("evaluate".equals(args[0])) {
       evaluateModel(args[1], args[2]);
+    } else if ("evaluate-mr".equals(args[0])) {
+      if (args.length < 4) printHelpAndExit();
+      ToolRunner.run(new EvaluatorDriver(), Arrays.copyOfRange(args, 1, 4));
     }
   }
 
-  public static void main(String[] args) throws IOException, ClassNotFoundException {
+  public static void main(String[] args) throws Exception {
     new Main().run(args);
   }
 
