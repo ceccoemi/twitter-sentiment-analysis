@@ -30,7 +30,7 @@ public class ClassifierTest {
 
   @Test
   public void loadModelAndClassify() throws IOException, ClassNotFoundException {
-    Classifier classifier = new Classifier(tempPath);
+    TrainableClassifier classifier = new TrainableClassifier(tempPath);
     assertEquals("0", classifier.classify("sad sad sad tweet"));
     assertEquals("1", classifier.classify("good good good tweet"));
   }

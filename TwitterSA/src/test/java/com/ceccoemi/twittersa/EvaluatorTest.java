@@ -23,7 +23,7 @@ public class EvaluatorTest {
         new Tweet("1", "good good good tweet!"),
         new Tweet("0", "sad sad sad tweet!"));
 
-    Classifier mockedClassifier = mock(Classifier.class);
+    TrainableClassifier mockedClassifier = mock(TrainableClassifier.class);
     when(mockedClassifier.classify(anyString())).thenReturn("1", "0", "1", "0");
 
     Evaluator evaluator = new Evaluator(mockedClassifier);

@@ -13,12 +13,13 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
 
   @Override
   public void setup(Context context) {
-    Configuration conf = context.getConfiguration();
-    try {
-      classifier = new Classifier(conf.get("model-path"));
-    } catch (IOException | ClassNotFoundException e) {
-      e.printStackTrace();
-    }
+   // Configuration conf = context.getConfiguration();
+   // try {
+   //   classifier = new TrainableClassifier(conf.get("model-path"));
+   // } catch (IOException | ClassNotFoundException e) {
+   //   e.printStackTrace();
+   // }
+    classifier = new RandomClassifier();
   }
 
   @Override

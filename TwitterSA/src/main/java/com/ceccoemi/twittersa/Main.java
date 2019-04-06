@@ -27,7 +27,8 @@ public class Main {
 
   private void evaluateModel(String modelFile, String inputFile)
       throws IOException, ClassNotFoundException {
-    Classifier classifier = new Classifier(modelFile);
+    //TrainableClassifier classifier = new TrainableClassifier(modelFile);
+    Classifier classifier = new RandomClassifier();
     TweetsReader reader = new TweetsReaderCsv(inputFile);
     Evaluator evaluator = new Evaluator(classifier);
     ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.readTweets());
