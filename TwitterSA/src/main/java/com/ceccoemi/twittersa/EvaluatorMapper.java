@@ -17,7 +17,7 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
   @Override
   public void setup(Context context) {
     try {
-      File modelFile = new File("sentiment.model");
+      File modelFile = new File("./model");
       classifier = new TrainableClassifier(modelFile);
     } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();

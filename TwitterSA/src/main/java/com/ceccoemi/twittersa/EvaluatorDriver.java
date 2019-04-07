@@ -24,7 +24,7 @@ public class EvaluatorDriver extends Configured implements Tool {
     Job job = Job.getInstance(conf, "evaluator");
     job.setJarByClass(Main.class);
 
-    job.addCacheFile(new URI("hdfs://localhost:9000/user/ceccoemi/sentiment.model"));
+    job.addCacheFile(new URI("/user/ceccoemi/sentiment.model#model"));
 
     job.setMapperClass(EvaluatorMapper.class);
     job.setCombinerClass(EvaluatorReducer.class);
