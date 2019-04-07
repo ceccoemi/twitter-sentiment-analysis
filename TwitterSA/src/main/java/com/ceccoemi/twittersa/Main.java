@@ -2,6 +2,7 @@ package com.ceccoemi.twittersa;
 
 import org.apache.hadoop.util.ToolRunner;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -14,7 +15,7 @@ public class Main {
         "Available commands:",
         "    train <input-file> <output-file> [-v|--verbose]",
         "    evaluate <model-file> <input-file> [-v|--verbose]",
-        "    evaluate-mr <model-file> <input-dir> <output-dir>"));
+        "    evaluate-mr <input-dir> <output-dir>"));
     System.exit(-1);
   }
 
@@ -25,10 +26,11 @@ public class Main {
     trainer.storeModel(outputPath);
   }
 
-  private void evaluateModel(String modelFile, String inputFile)
+  private void evaluateModel(String modelPath, String inputFile)
       throws IOException, ClassNotFoundException {
-    //TrainableClassifier classifier = new TrainableClassifier(modelFile);
-    Classifier classifier = new RandomClassifier();
+    File modelFile = new File(modelPath);
+    Classifier classifier = new TrainableClassifier(modelFile);
+    //Classifier classifier = new RandomClassifier();
     TweetsReader reader = new TweetsReaderCsv(inputFile);
     Evaluator evaluator = new Evaluator(classifier);
     ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.readTweets());
@@ -49,8 +51,7 @@ public class Main {
     } else if ("evaluate".equals(args[0])) {
       evaluateModel(args[1], args[2]);
     } else if ("evaluate-mr".equals(args[0])) {
-      if (args.length < 4) printHelpAndExit();
-      ToolRunner.run(new EvaluatorDriver(), Arrays.copyOfRange(args, 1, 4));
+      ToolRunner.run(new EvaluatorDriver(), Arrays.copyOfRange(args, 1, 3));
     }
   }
 

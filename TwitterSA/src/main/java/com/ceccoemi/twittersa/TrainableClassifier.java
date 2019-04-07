@@ -12,18 +12,17 @@ public class TrainableClassifier implements Classifier {
 
   private LMClassifier<LanguageModel, MultivariateDistribution> classifier;
 
-  public TrainableClassifier(String modelPath) throws IOException, ClassNotFoundException {
+  public TrainableClassifier(File modelFile) throws IOException, ClassNotFoundException {
     Config config = Config.getInstance();
 
     if (config.isVerbose())
-      System.out.print("Loading model from \"" + modelPath + "\" ... ");
+      System.out.print("Loading model from \"" + modelFile.getName() + "\" ... ");
 
-    File modelFile = new File(modelPath);
     classifier = (LMClassifier<LanguageModel, MultivariateDistribution>)
         AbstractExternalizable.readObject(modelFile);
 
     if (config.isVerbose())
-      System.out.println("\rLoading model from \"" + modelPath + "\" ... Done!");
+      System.out.println("\rLoading model from \"" + modelFile.getName() + "\" ... Done!");
   }
 
   public String classify(String tweet) {

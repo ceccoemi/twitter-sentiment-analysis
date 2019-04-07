@@ -5,7 +5,10 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
 
@@ -13,13 +16,13 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
 
   @Override
   public void setup(Context context) {
-   // Configuration conf = context.getConfiguration();
-   // try {
-   //   classifier = new TrainableClassifier(conf.get("model-path"));
-   // } catch (IOException | ClassNotFoundException e) {
-   //   e.printStackTrace();
-   // }
-    classifier = new RandomClassifier();
+    try {
+      File modelFile = new File("sentiment.model");
+      classifier = new TrainableClassifier(modelFile);
+    } catch (IOException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    // classifier = new RandomClassifier();
   }
 
   @Override
