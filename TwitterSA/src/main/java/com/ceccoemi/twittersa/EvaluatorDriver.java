@@ -27,7 +27,9 @@ public class EvaluatorDriver extends Configured implements Tool {
 
     job.setMapperClass(EvaluatorMapper.class);
     job.setCombinerClass(EvaluatorReducer.class);
+    job.setPartitionerClass(EvaluatorPartitioner.class);
     job.setReducerClass(EvaluatorReducer.class);
+    job.setNumReduceTasks(4);
 
     job.setMapOutputKeyClass(Text.class);
     job.setMapOutputValueClass(IntWritable.class);
