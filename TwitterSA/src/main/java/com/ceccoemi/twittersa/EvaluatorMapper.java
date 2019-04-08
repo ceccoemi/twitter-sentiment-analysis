@@ -1,14 +1,11 @@
 package com.ceccoemi.twittersa;
 
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
 
@@ -22,7 +19,6 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
     } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
     }
-    // classifier = new RandomClassifier();
   }
 
   @Override

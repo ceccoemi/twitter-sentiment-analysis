@@ -12,7 +12,6 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import java.io.File;
 import java.net.URI;
 
 public class EvaluatorDriver extends Configured implements Tool {
@@ -24,7 +23,7 @@ public class EvaluatorDriver extends Configured implements Tool {
     Job job = Job.getInstance(conf, "evaluator");
     job.setJarByClass(Main.class);
 
-    job.addCacheFile(new URI("/user/ceccoemi/sentiment.model#model"));
+    job.addCacheFile(new URI(args[0] + "#model"));
 
     job.setMapperClass(EvaluatorMapper.class);
     job.setCombinerClass(EvaluatorReducer.class);
@@ -35,8 +34,8 @@ public class EvaluatorDriver extends Configured implements Tool {
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(NullWritable.class);
 
-    FileInputFormat.addInputPath(job, new Path(args[0]));
-    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+    FileInputFormat.addInputPath(job, new Path(args[1]));
+    FileOutputFormat.setOutputPath(job, new Path(args[2]));
 
     return job.waitForCompletion(true) ? 0 : 1;
   }

@@ -17,22 +17,22 @@ public class Evaluator {
 
     int n = tweets.size();
     int progressPercentage = 0;
-    int truePositive = 0;
-    int trueNegative = 0;
-    int falsePositive = 0;
-    int falseNegative = 0;
+    int truePositives = 0;
+    int trueNegatives = 0;
+    int falsePositives = 0;
+    int falseNegatives = 0;
     for (int i = 0; i < n; i++) {
       Tweet tweet = tweets.get(i);
       String classifiedSentiment = classifier.classify(tweet.getText());
       if (tweet.getSentiment().equals(classifiedSentiment))
         if ("1".equals(classifiedSentiment))
-          truePositive++;
+          truePositives++;
         else
-          trueNegative++;
+          trueNegatives++;
       else if ("1".equals(classifiedSentiment))
-        falsePositive++;
+        falsePositives++;
       else
-        falseNegative++;
+        falseNegatives++;
       if (config.isVerbose()) {
         int newPercentage = i*100/n;
         if (newPercentage != progressPercentage) {
@@ -47,6 +47,6 @@ public class Evaluator {
     }
 
     return new ConfusionMatrix(
-        truePositive, falsePositive, falseNegative, trueNegative);
+        truePositives, falsePositives, falseNegatives, trueNegatives);
   }
 }

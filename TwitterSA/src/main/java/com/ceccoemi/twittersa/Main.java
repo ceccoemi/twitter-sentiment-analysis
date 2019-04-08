@@ -5,6 +5,7 @@ import org.apache.hadoop.util.ToolRunner;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -14,8 +15,8 @@ public class Main {
         "",
         "Available commands:",
         "    train <input-file> <output-file> [-v|--verbose]",
-        "    evaluate <model-file> <input-file> [-v|--verbose]",
-        "    evaluate-mr <input-dir> <output-dir>"));
+        "    evaluate <model-file> <input-dir> [-v|--verbose]",
+        "    evaluate-mr <model-file> <input-dir> <output-dir>"));
     System.exit(-1);
   }
 
@@ -26,15 +27,23 @@ public class Main {
     trainer.storeModel(outputPath);
   }
 
-  private void evaluateModel(String modelPath, String inputFile)
+  private void evaluateModel(String modelPath, String inputDir)
       throws IOException, ClassNotFoundException {
     File modelFile = new File(modelPath);
     Classifier classifier = new TrainableClassifier(modelFile);
-    //Classifier classifier = new RandomClassifier();
-    TweetsReader reader = new TweetsReaderCsv(inputFile);
     Evaluator evaluator = new Evaluator(classifier);
-    ConfusionMatrix confusionMatrix = evaluator.evaluate(reader.readTweets());
-    System.out.println(confusionMatrix.toString());
+
+    File rootDir = new File(inputDir);
+    File[] files = rootDir.listFiles();
+    ConfusionMatrix[] matrices = new ConfusionMatrix[files.length];
+    for (int i = 0; i < files.length; i++) {
+      String fileName = files[i].getCanonicalPath();
+      TweetsReader reader = new TweetsReaderCsv(fileName);
+      List<Tweet> tweets = reader.readTweets();
+      matrices[i] = evaluator.evaluate(tweets);
+    }
+    ConfusionMatrix matrix = ConfusionMatrix.join(matrices);
+    System.out.println(matrix.toString());
   }
 
   private void run(String[] args) throws Exception {
@@ -51,7 +60,8 @@ public class Main {
     } else if ("evaluate".equals(args[0])) {
       evaluateModel(args[1], args[2]);
     } else if ("evaluate-mr".equals(args[0])) {
-      ToolRunner.run(new EvaluatorDriver(), Arrays.copyOfRange(args, 1, 3));
+      if (args.length < 4) printHelpAndExit();
+      ToolRunner.run(new EvaluatorDriver(), Arrays.copyOfRange(args, 1, 4));
     }
   }
 

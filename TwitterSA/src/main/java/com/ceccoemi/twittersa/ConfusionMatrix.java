@@ -1,7 +1,5 @@
 package com.ceccoemi.twittersa;
 
-import java.util.Arrays;
-
 import static org.apache.commons.lang3.StringUtils.center;
 
 public class ConfusionMatrix {
@@ -22,6 +20,20 @@ public class ConfusionMatrix {
 
   public float accuracy() {
     return (float) (tp + tn) / n;
+  }
+
+  public static ConfusionMatrix join(ConfusionMatrix ...  matrices) {
+    int truePositives = 0;
+    int falsePositives = 0;
+    int falseNegatives = 0;
+    int trueNegatives = 0;
+    for (ConfusionMatrix matrix : matrices) {
+      truePositives += matrix.tp;
+      falsePositives += matrix.fp;
+      falseNegatives += matrix.fn;
+      trueNegatives += matrix.tn;
+    }
+    return new ConfusionMatrix(truePositives, falsePositives, falseNegatives, trueNegatives);
   }
 
   @Override
