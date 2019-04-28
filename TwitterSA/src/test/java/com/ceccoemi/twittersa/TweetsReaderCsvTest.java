@@ -3,9 +3,10 @@ package com.ceccoemi.twittersa;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class TweetsReaderCsvTest {
 
@@ -21,8 +22,8 @@ public class TweetsReaderCsvTest {
     String fileName = classLoader.getResource("empty.csv").getFile();
 
     TweetsReader reader = new TweetsReaderCsv(fileName);
-    List<Tweet> tweets = reader.readTweets();
-    assertEquals(0, tweets.size());
+    Iterator<Tweet> tweets = reader.readTweets();
+    assertFalse(tweets.hasNext());
   }
 
 
@@ -42,25 +43,25 @@ public class TweetsReaderCsvTest {
     String fileName = classLoader.getResource("tweets.csv").getFile();
 
     TweetsReader reader = new TweetsReaderCsv(fileName);
-    List<Tweet> tweets = reader.readTweets();
+    Iterator<Tweet> tweets = reader.readTweets();
 
-    assertEquals(4, tweets.size());
-
-    Tweet tweet = tweets.get(0);
+    Tweet tweet = tweets.next();
     assertEquals("sad sad sad tweet!", tweet.getText());
     assertEquals("0", tweet.getSentiment());
 
-    tweet = tweets.get(1);
+    tweet = tweets.next();
     assertEquals("good good good tweet!", tweet.getText());
     assertEquals("1", tweet.getSentiment());
 
-    tweet = tweets.get(2);
+    tweet = tweets.next();
     assertEquals("good good good tweet!", tweet.getText());
     assertEquals("1", tweet.getSentiment());
 
-    tweet = tweets.get(3);
+    tweet = tweets.next();
     assertEquals("sad sad sad tweet!", tweet.getText());
     assertEquals("0", tweet.getSentiment());
+
+    assertFalse(tweets.hasNext());
   }
 
 }

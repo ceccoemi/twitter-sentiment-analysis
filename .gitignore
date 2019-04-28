@@ -3,6 +3,7 @@
 
 # too big files
 datasets/*.csv
+datasets/*.txt
 datasets/testsets
 
 # jupyter notebooks

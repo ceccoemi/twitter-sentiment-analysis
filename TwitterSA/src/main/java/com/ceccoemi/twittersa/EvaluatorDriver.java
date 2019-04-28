@@ -1,5 +1,6 @@
 package com.ceccoemi.twittersa;
 
+import com.ceccoemi.twittersa.main.ClassifyMR;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -21,7 +22,7 @@ public class EvaluatorDriver extends Configured implements Tool {
     Configuration conf = getConf();
 
     Job job = Job.getInstance(conf, "evaluator");
-    job.setJarByClass(Main.class);
+    job.setJarByClass(ClassifyMR.class);
 
     job.addCacheFile(new URI(args[0] + "#model"));
 

@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertTrue;
 
@@ -27,11 +27,11 @@ public class TrainerTest {
 
   @Test
   public void testTraining() throws IOException {
-    List<Tweet> tweets = Arrays.asList(
+    Iterator<Tweet> tweets = Arrays.asList(
         new Tweet("0", "sad sad sad tweet!"),
         new Tweet("1", "good good good tweet!"),
         new Tweet("1", "good good good tweet!"),
-        new Tweet("0", "sad sad sad tweet!"));
+        new Tweet("0", "sad sad sad tweet!")).iterator();
 
     Trainer trainer = new Trainer();
     trainer.train(tweets);
@@ -45,7 +45,7 @@ public class TrainerTest {
     // create a directory with the same name to make the file creation fail
     new File(tempPath).mkdir();
 
-    List<Tweet> tweets = Arrays.asList(new Tweet("0", "dummy tweet"));
+    Iterator<Tweet> tweets = Arrays.asList(new Tweet("0", "dummy tweet")).iterator();
 
     Trainer trainer = new Trainer();
     trainer.train(tweets);

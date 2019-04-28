@@ -15,7 +15,7 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
   public void setup(Context context) {
     try {
       File modelFile = new File("./model");
-      classifier = new TrainableClassifier(modelFile);
+      classifier = new Classifier(modelFile);
     } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
     }
@@ -24,16 +24,13 @@ public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
   @Override
   public void map(Object key, Text value, Context context)
       throws IOException, InterruptedException {
-    String[] splitted = value.toString().split(",", 2);
-    String actualSentiment = splitted[0];
-    if (!actualSentiment.matches("[01]")) return;
-    String tweetText = splitted[1];
-    String classifiedSentiment = classifier.classify(tweetText);
+    String sentiment = classifier.classify(value.toString());
     String outputKey = "";
-    if ("1".equals(classifiedSentiment))
-      outputKey = classifiedSentiment.equals(actualSentiment) ? "tp" : "fp";
-    else
-      outputKey = classifiedSentiment.equals(actualSentiment) ? "tn" : "fn";
+    if ("0".equals(sentiment)) {
+      outputKey = "negatives";
+  } else {
+      outputKey = "positives";
+  }
     context.write(new Text(outputKey), new IntWritable(1));
   }
 

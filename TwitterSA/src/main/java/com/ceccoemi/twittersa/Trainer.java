@@ -8,48 +8,28 @@ import com.aliasi.lm.NGramProcessLM;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.List;
+import java.util.Iterator;
 
 public class Trainer {
 
-  private Config config = Config.getInstance();
   private DynamicLMClassifier<NGramProcessLM> classifier =
       DynamicLMClassifier.createNGramProcess(new String[]{"1", "0"}, 8);
 
-  public void train(List<Tweet> tweets) {
-    if (config.isVerbose())
-      System.out.print("Training ... ");
-
-    int n = tweets.size();
-    int progressPercentage = 0;
-    for (int i = 0; i < n; i++) {
-      Tweet tweet = tweets.get(i);
+  public void train(Iterator<Tweet> tweets) {
+    while (tweets.hasNext()) {
+      Tweet tweet = tweets.next();
       String text = tweet.getText();
       String sentiment = tweet.getSentiment();
       Classification classification = new Classification(sentiment);
       Classified<CharSequence> classified = new Classified<CharSequence>(text, classification);
       classifier.handle(classified);
-      if (config.isVerbose()) {
-        int newPercentage = i*100/n;
-        if (newPercentage != progressPercentage) {
-          progressPercentage = newPercentage;
-          System.out.print("\rTraining ... " + progressPercentage + "%");
-        }
-      }
     }
-
-    if (config.isVerbose())
-      System.out.println("\rTraining ... Done!");
   }
 
   public void storeModel(String fileName) throws IOException {
       FileOutputStream fos = new FileOutputStream(fileName);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
-      if (config.isVerbose())
-        System.out.print("Saving the model in \"" + fileName + "\" ... ");
       classifier.compileTo(oos);
-      if (config.isVerbose())
-        System.out.println("\rSaving the model in \"" + fileName + "\" Done!");
   }
 
 }

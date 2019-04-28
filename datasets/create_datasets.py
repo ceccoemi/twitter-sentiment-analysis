@@ -16,7 +16,7 @@ def main():
     data = data.drop_duplicates(subset=[data.columns[1]])
     train, test = train_test_split(data, test_size=0.9, random_state=42)
     train.to_csv('train.csv', index=False, header=False)
-    test.to_csv('test.csv', index=False, header=False)
+    test.to_csv('test.txt', index=False, header=False, columns=[5])
 
 
 if __name__ == '__main__':
