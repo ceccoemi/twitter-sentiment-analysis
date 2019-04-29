@@ -15,7 +15,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 import java.net.URI;
 
-public class EvaluatorDriver extends Configured implements Tool {
+public class ClassificationDriver extends Configured implements Tool {
 
   @Override
   public int run(String[] args) throws Exception {
@@ -26,10 +26,10 @@ public class EvaluatorDriver extends Configured implements Tool {
 
     job.addCacheFile(new URI(args[0] + "#model"));
 
-    job.setMapperClass(EvaluatorMapper.class);
-    job.setCombinerClass(EvaluatorReducer.class);
-    job.setPartitionerClass(EvaluatorPartitioner.class);
-    job.setReducerClass(EvaluatorReducer.class);
+    job.setMapperClass(ClassificationMapper.class);
+    job.setCombinerClass(ClassificationReducer.class);
+    job.setPartitionerClass(ClassificationPartitioner.class);
+    job.setReducerClass(ClassificationReducer.class);
     job.setNumReduceTasks(4);
 
     job.setMapOutputKeyClass(Text.class);
@@ -44,7 +44,7 @@ public class EvaluatorDriver extends Configured implements Tool {
   }
 
  public static void main(String[] args) throws Exception {
-    System.exit(ToolRunner.run(new EvaluatorDriver(), args));
+    System.exit(ToolRunner.run(new ClassificationDriver(), args));
  }
 
 }

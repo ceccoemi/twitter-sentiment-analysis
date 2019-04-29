@@ -7,9 +7,13 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.File;
 import java.io.IOException;
 
-public class EvaluatorMapper extends Mapper<Object, Text, Text, IntWritable> {
+public class ClassificationMapper extends Mapper<Object, Text, Text, IntWritable> {
 
   private Classifier classifier;
+
+  public ClassificationMapper(Classifier classifier) {
+    this.classifier = classifier;
+  }
 
   @Override
   public void setup(Context context) {

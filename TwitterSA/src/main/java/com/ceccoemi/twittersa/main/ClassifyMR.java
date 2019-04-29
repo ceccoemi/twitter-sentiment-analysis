@@ -1,6 +1,6 @@
 package com.ceccoemi.twittersa.main;
 
-import com.ceccoemi.twittersa.EvaluatorDriver;
+import com.ceccoemi.twittersa.ClassificationDriver;
 import org.apache.hadoop.util.ToolRunner;
 
 public class ClassifyMR {
@@ -10,6 +10,6 @@ public class ClassifyMR {
       System.out.println("Usage: classify-mr <model-file> <input-dir> <output-dir>");
       System.exit(-1);
     }
-    ToolRunner.run(new EvaluatorDriver(), args);
+    ToolRunner.run(new ClassificationDriver(), args);
   }
 }
