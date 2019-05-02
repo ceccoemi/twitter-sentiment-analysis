@@ -20,7 +20,6 @@ public class Classify {
 
     Classifier classifier = new Classifier(new File(modelFile));
 
-    int total = 0;
     int positives = 0;
     int negatives = 0;
     File rootDir = new File(inputDir);
@@ -34,12 +33,11 @@ public class Classify {
         } else {
           positives++;
         }
-        total++;
       }
     }
-    System.out.println("Total: " + total);
-    System.out.println("Negatives: " + negatives + " - " + negatives*100/total + "%");
-    System.out.println("Positives: " + positives + " - " + positives*100/total + "%");
+    System.out.println("Total: " + negatives + positives);
+    System.out.println("Negatives: " + negatives);
+    System.out.println("Positives: " + positives);
   }
 
 }

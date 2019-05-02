@@ -4,7 +4,7 @@
 # too big files
 datasets/*.csv
 datasets/*.txt
-datasets/testsets
+datasets/testsets*
 
 # jupyter notebooks
 .ipynb_checkpoints

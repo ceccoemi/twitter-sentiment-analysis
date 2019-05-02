@@ -15,6 +15,10 @@ public class ClassificationMapper extends Mapper<Object, Text, Text, IntWritable
     this.classifier = classifier;
   }
 
+  public ClassificationMapper() {
+
+  }
+
   @Override
   public void setup(Context context) {
     try {

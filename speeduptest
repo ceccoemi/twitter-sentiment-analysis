@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Compute the speedup of a sequential execution vs a parallelized execution with Hadoop
+# with inputs of different size
+
+INPUT_DIR=testsets
+HADOOP_OUTPUT_DIR=output
+
+for dataSize in 1 3 5 10; do
+    echo "=============================================================================="
+    startTimeSequential=$(date +%s)
+    java -jar TwitterSA/target/classify.jar sentiment.model datasets/$INPUT_DIR$dataSize
+    endTimeSequential=$(date +%s)
+    elapsedSequential=$(( endTimeSequential - startTimeSequential ))
+    echo "Elapsed time sequential version: $elapsedSequential s"
+
+    startTimeParallel=$(date +%s)
+    hadoop jar TwitterSA/target/classify-mr.jar sentiment.model $INPUT_DIR$dataSize $HADOOP_OUTPUT_DIR$dataSize 2> /dev/null
+    endTimeParallel=$(date +%s)
+    elapsedParallel=$(( endTimeParallel - startTimeParallel ))
+
+    # get Hadoop output
+    sentiments=($(hdfs dfs -cat $HADOOP_OUTPUT_DIR$dataSize/* | tr --delete [:alpha:][:blank:]))
+    negatives=${sentiments[0]}
+    positives=${sentiments[1]}
+
+    echo "Total: $(( negatives + positives ))"
+    echo "Negatives: $negatives"
+    echo "Positives: $positives"
+    echo "Elapsed time parallel version: $elapsedParallel s"
+
+    echo "Speedup (size=$dataSize): $(echo $elapsedSequential $elapsedParallel | awk '{print $1/$2}')"
+done
