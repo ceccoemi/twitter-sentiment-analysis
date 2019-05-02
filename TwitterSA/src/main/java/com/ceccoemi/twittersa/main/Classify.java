@@ -35,7 +35,7 @@ public class Classify {
         }
       }
     }
-    System.out.println("Total: " + negatives + positives);
+    System.out.println("Total: " + (negatives + positives));
     System.out.println("Negatives: " + negatives);
     System.out.println("Positives: " + positives);
   }
