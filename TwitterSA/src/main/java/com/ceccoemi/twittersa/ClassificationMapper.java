@@ -22,7 +22,7 @@ public class ClassificationMapper extends Mapper<Object, Text, Text, IntWritable
   @Override
   public void setup(Context context) {
     try {
-      File modelFile = new File("./model");
+      File modelFile = new File("./model");  // load from the Distributed Cache
       classifier = new Classifier(modelFile);
     } catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();

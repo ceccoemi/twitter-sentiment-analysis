@@ -105,6 +105,71 @@ After loading the model, the program iterates over the tweet texts and uses the 
 
 \subsection{Distributed version}
 
+The classification process can be improved by implementing a distributed algorithm. This project uses Hadoop with its \textit{Hadoop Distributed File System} (HDFS) in order to better handle large amounts of data.
 
+The distributed algorithm is implemented with the \textit{MapReduce} framework, that is a programming model for processing and generating big data sets on a cluster of computers. A MapReduce program is composed by a \textit{map} phase, which performs a filtering operation of the input data, and a \textit{reduce} phase, which collects the results of the map function and generate an output.
+
+In order to perform the classification of a tweet the model must first be loaded. This implementation exploits the \textit{Distributed Cache} tool to make the file where the model is stored accessible to all the map tasks. The Distributed Cache is a read-only data structure from which each application in the MapReduce framework can read files. Each map task loads its own model so there are not synchronization issues such as race conditions.
+
+Once the model is loaded from its file we can perform the map phase, which consists of mapping each tweet text to its classified sentiment.
+
+\begin{algorithm}[H]
+\label{MapFunction}
+\caption{Map function}
+\begin{algorithmic}
+
+    \State $m$ \Comment{Loaded model}
+    \State $t$ \Comment{Tweet text}
+    \State $k$ = $null$
+    \State s = classify($m$, $t$)
+    \If{isPositiveSentiment($s$)}
+        \State $k$ = \textit{positives}
+    \Else
+        \State $k$ = \textit{negatives}
+    \EndIf
+    \State \Return $k$, 1
+
+\end{algorithmic}
+\end{algorithm}
+
+As you can see, the map function is very similar to a single iteration of the sequential algorithm. The input for the map function is a single tweet text, this text is classified with the previously loaded model and then the output key is generated depending on the classified sentiment. There could be only two different output keys: \textit{positives} if the tweet has been classified as positive and \textit{negatives} if the tweet has been classified as negative.
+
+The reduce phase is quite straightforward. It takes as input the key, which as already explained can be \textit{positives} or \textit{negatives} and a list of as many ones as many tweets have been classified in that category.
+
+\begin{algorithm}[H]
+\label{ReduceFunction}
+\caption{Reduce function}
+\begin{algorithmic}
+
+    \State $k$ \Comment{The key (\textit{positives} or \textit{negatives})}
+    \State $v$ \Comment{List of ones values}
+    \State $c$ = 0
+    \For{each element in $v$}
+        \State c = c + 1
+    \EndFor
+    \State \Return $k$, $c$
+
+\end{algorithmic}
+\end{algorithm}
+
+The only thing that the reduce function has to do is to count the number of elements that are in the list associated with the input key.
+
+Since the keys that the mapper passes to the reducer are always two (\textit{positive} or \textit{negatives}), the number of reducers can be specified at compilation time to two. Moreover, to optimize the operations of dispatching the mapper output, a \textit{partition} function is implemented. The purpose of this function is to assign the output key of a map function to a specific reducer. Since we have set the number of reducers to two, the output of this function is 1 or 0 dependending if the key is \textit{positives} or \textit{negatives}.
+
+\begin{algorithm}[H]
+\label{PartitionFunction}
+\caption{Partion function}
+\begin{algorithmic}
+
+    \If{isPositive($k$)}
+        \State \Return 1
+    \Else
+        \State \Return 0
+    \EndIf
+
+\end{algorithmic}
+\end{algorithm}
+
+In this way we have one reducer that counts the number of tweets classified as positives and another reducer which counts the number of tweets classified as negatives.
 
 \end{document}
