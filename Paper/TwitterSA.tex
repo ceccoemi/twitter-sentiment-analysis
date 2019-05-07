@@ -161,15 +161,67 @@ Since the keys that the mapper passes to the reducer are always two (\textit{pos
 \caption{Partion function}
 \begin{algorithmic}
 
-    \If{isPositive($k$)}
+    \If{$k$ == "positives"}
         \State \Return 1
-    \Else
+    \ElsIf{$k$ == "negatives"}
         \State \Return 0
+    \Else
+        \State \Return -1 \Comment{Error}
     \EndIf
 
 \end{algorithmic}
 \end{algorithm}
 
 In this way we have one reducer that counts the number of tweets classified as positives and another reducer which counts the number of tweets classified as negatives.
+
+\section{Speedup analysis}
+
+To compare the performance of a sequential algorithm with a parallel version, the main measure used is the \textit{speedup}, that is the ration between the execution time of the sequential version and the execution time of the parallel version with the same input.
+
+\begin{align}
+S = \dfrac{t_S}{t_P}
+\end{align}
+
+Ideally, the speedup should be the number of processor used to perform the parallel version. For a distributed algorithm, it should be the number of nodes in the cluster. In this section we report the results of some experiments in order to analyze the speedup of the classification algorithm in its two versions: sequential and distributed.
+
+The inputs for these experiments are some text files containing the tweet texts. The size of a single text file is about the size of a HDFS block, that is 128 MB by default. This make it easier to control the number of splits into which the input will be divided. In order to see the trend of the speedup, we tested the distributed algorithm in a cluster with a different number of nodes, more precisely from two to five nodes. Each node has an Intel Haswell CPU with four cores and 8 GB of RAM.
+
+In this plot there are the speedups obtained with an input consisting of a single text file, that is a single HDFS block.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.2in]{fig/speedup1}
+\end{figure}
+
+As you can see, with an input of only one file, the distributed version is slower than the sequential algorithm because the speedup is minor than one. The reason of that is because the time spent in managing the various tasks and moving the data in the distributed environment is too much to get an improvement in the overall execution time.
+
+Here we report the speedups with an input of five files, that are five HDFS blocks.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.2in]{fig/speedup5}
+\end{figure}
+
+Increasing the size of the input we can see a big improvements in the performances. With only two nodes you have a speedup of 3.5, with three, four and five nodes the speedup stabilizes around 4. It means that with an input of that size, that is five HDFS blocks, until three nodes you get a \textit{super-linear} speedup, with four nodes you get a \textit{linear} speedup and with five nodes you get a \textit{sub-linear} speedup.
+
+Here we report the speedups with an input of ten files, that are ten HDFS blocks.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.2in]{fig/speedup10}
+\end{figure}
+
+We can notice that the trends is the same as in the previous plot, but the obtained speedups are higher.
+
+Here we report the speedups with an input of twenty files, that are twenty HDFS blocks.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3.2in]{fig/speedup20}
+\end{figure}
+
+With an input size of about 2.5 GB we get better performances with a larger number of nodes, such as four or five.
+
+From these simple experiments we can confirm that Hadoop is designed to work with big data, because if the input size is too small we have a lot of overhead due to tasks management. Apart from the first case, where we passed only a single file to the classifier, the speedups are always super-linear, that means that the speedup is alway greater then the number of nodes in the clusters.
 
 \end{document}
