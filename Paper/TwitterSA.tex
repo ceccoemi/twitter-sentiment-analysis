@@ -55,12 +55,11 @@ The process of training the model must be computed in a sequential way because e
 Thanks to the LingPipe library, the algorithm of training the model is straightforward:
 
 \begin{algorithm}[H]
-\label{TrainingAlgorithm}
 \caption{Training the model}
+\textbf{Input:} a list of tweets $T$ with text and sentiment. \\
 \begin{algorithmic}
-
     \State $m$ = initializeModel()
-    \For{each tweet $t$}
+    \For{each $t \in T$}
         \State handle($m$, $t$)
     \EndFor
     \State saveModel($m$)
@@ -83,8 +82,9 @@ The first thing to do is to load the trained model. This process may take a long
 After loading the model, the program iterates over the tweet texts and uses the classifier to predict their sentiment. During the iteration, the program keep tracks of the number of negative tweets as well as the number of positive tweets with two counters. The output of this algorithm are the two counters from which the general sentiment can be derived.
 
 \begin{algorithm}[H]
-\label{SequentialClassification}
 \caption{Sequential classification}
+\textbf{Input:} a list of tweets $T$ with text only. \\
+\textbf{Output:} two values $p, n \in \mathbb{N}$ that are the number of tweets classified as positives or negatives respectively. \\
 \begin{algorithmic}
 
     \State $m$ = loadModel()
@@ -107,20 +107,17 @@ After loading the model, the program iterates over the tweet texts and uses the 
 
 The classification process can be improved by implementing a distributed algorithm. This project uses Hadoop with its \textit{Hadoop Distributed File System} (HDFS) in order to better handle large amounts of data.
 
-The distributed algorithm is implemented with the \textit{MapReduce} framework, that is a programming model for processing and generating big data sets on a cluster of computers. A MapReduce program is composed by a \textit{map} phase, which performs a filtering operation of the input data, and a \textit{reduce} phase, which collects the results of the map function and generate an output.
+The distributed algorithm is implemented with the \textit{MapReduce} framework, that is a programming model for processing and generating big data sets on a cluster of computers. A MapReduce program is composed by a \textit{map} phase, which performs a filtering operation of the input data, and a \textit{reduce} phase, which collects the results of the map function and generate an output. The map function processes each element of the input and returns a value associated with a key. The reduce function takes as input the keys returned by the map function and their associated values and then it combines them in a single value.
 
 In order to perform the classification of a tweet the model must first be loaded. This implementation exploits the \textit{Distributed Cache} tool to make the file where the model is stored accessible to all the map tasks. The Distributed Cache is a read-only data structure from which each application in the MapReduce framework can read files. Each map task loads its own model so there are not synchronization issues such as race conditions.
 
 Once the model is loaded from its file we can perform the map phase, which consists of mapping each tweet text to its classified sentiment.
 
 \begin{algorithm}[H]
-\label{MapFunction}
 \caption{Map function}
+\textbf{Input:} a trained model $m$, a tweet text $t$ \\
+\textbf{Output:} a key $k$ and a value $v = 1$ \\
 \begin{algorithmic}
-
-    \State $m$ \Comment{Loaded model}
-    \State $t$ \Comment{Tweet text}
-    \State $k$ = $null$
     \State s = classify($m$, $t$)
     \If{isPositiveSentiment($s$)}
         \State $k$ = \textit{positives}
@@ -137,18 +134,15 @@ As you can see, the map function is very similar to a single iteration of the se
 The reduce phase is quite straightforward. It takes as input the key, which as already explained can be \textit{positives} or \textit{negatives} and a list of as many ones as many tweets have been classified in that category.
 
 \begin{algorithm}[H]
-\label{ReduceFunction}
 \caption{Reduce function}
+\textbf{Input:} a key $k$ and a list $V$ of values $v = 1$ \\
+\textbf{Output:} a key $k$ and a value $c$ \\
 \begin{algorithmic}
-
-    \State $k$ \Comment{The key (\textit{positives} or \textit{negatives})}
-    \State $v$ \Comment{List of ones values}
     \State $c$ = 0
-    \For{each element in $v$}
+    \For{each element in $v \in V$}
         \State c = c + 1
     \EndFor
     \State \Return $k$, $c$
-
 \end{algorithmic}
 \end{algorithm}
 
@@ -157,10 +151,10 @@ The only thing that the reduce function has to do is to count the number of elem
 Since the keys that the mapper passes to the reducer are always two (\textit{positive} or \textit{negatives}), the number of reducers can be specified at compilation time to two. Moreover, to optimize the operations of dispatching the mapper output, a \textit{partition} function is implemented. The purpose of this function is to assign the output key of a map function to a specific reducer. Since we have set the number of reducers to two, the output of this function is 1 or 0 dependending if the key is \textit{positives} or \textit{negatives}.
 
 \begin{algorithm}[H]
-\label{PartitionFunction}
 \caption{Partion function}
+\textbf{Input:} a key $k$ \\
+\textbf{Output:} a value $v$ \\
 \begin{algorithmic}
-
     \If{$k$ == "positives"}
         \State \Return 1
     \ElsIf{$k$ == "negatives"}
@@ -168,7 +162,6 @@ Since the keys that the mapper passes to the reducer are always two (\textit{pos
     \Else
         \State \Return -1 \Comment{Error}
     \EndIf
-
 \end{algorithmic}
 \end{algorithm}
 

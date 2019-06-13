@@ -1,0 +1,25 @@
+\frametitle{Sequential classification}
+
+\begin{algorithm}[H]
+\caption{Sequential classification}
+\footnotesize
+\textbf{Input:} a list of tweets $T$ with text only. \\
+\textbf{Output:} two values $p, n \in \mathbb{N}$ that are the number of tweets classified as positives or negatives respectively. \\
+\begin{algorithmic}
+
+\State $m$ = loadModel()
+\State $p$ = 0
+\State $n$ = 0
+\For{each tweet $t$}
+    \State $s$ = classify($m$, $t$)
+    \If{isPositiveSentiment($s$)}
+        \State $p$ = $p$ + 1
+    \Else
+        \State $n$ = $n$ + 1
+    \EndIf
+\EndFor
+\State \Return $p$, $n$
+
+\end{algorithmic}
+\end{algorithm}
+

@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Sentiment analysis}{3}{0}{1}
+\beamer@sectionintoc {2}{Training the model}{7}{0}{2}
+\beamer@sectionintoc {3}{Sequential classification}{10}{0}{3}
+\beamer@sectionintoc {4}{Hadoop and the MapReduce framework}{13}{0}{4}
+\beamer@sectionintoc {5}{Distributed classification}{16}{0}{5}
+\beamer@sectionintoc {6}{Speedup}{22}{0}{6}
